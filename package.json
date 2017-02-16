@@ -1,0 +1,15 @@
+{
+  "name": "flow-playground",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kjirou/flow-playground.git",
+  "author": "kjirou",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "flow-bin": "^0.39.0"
+  },
+  "scripts": {
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+  }
+}
