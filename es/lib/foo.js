@@ -1,5 +1,7 @@
 // @flow
 
-import { add } from './bar';
+import { add, subtract } from './bar';
 
-const a = add(1 ,2);
+const added = add(1 ,2);
+
+const subtracted = subtract(2 ,1);
