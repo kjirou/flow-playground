@@ -33,3 +33,21 @@ const xAndY1/*:XAndY*/ = { x: 1, y: 2 };
 const xAndY2/*:XAndY*/ = { x: 1, y: 2, z: 3 };
 // Bad
 //const xAndY3/*:XAndY*/ = { x: 1, z: 3 };
+
+
+type Unit = { hp: number };
+type CreatureUnit = { job: string|null } & Unit;
+type FighterUnit = { job: 'fighter' } & Unit;
+type MageUnit = { job: 'mage' } & Unit;
+
+// Good
+({ hp: 1, job: null }: CreatureUnit);
+({ hp: 1, job: 'none' }: CreatureUnit);
+// Bad
+//({ hp: 1, job: 2 }: CreatureUnit);
+
+// Good
+({ hp: 1, job: 'fighter' }: FighterUnit);
+({ hp: 1, job: 'fighter' }: CreatureUnit);
+// Bad
+//({ hp: 1, job: 'fighter' }: MageUnit);
