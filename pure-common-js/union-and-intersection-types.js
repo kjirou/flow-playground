@@ -39,6 +39,7 @@ type Unit = { hp: number };
 type CreatureUnit = { job: string|null } & Unit;
 type FighterUnit = { job: 'fighter' } & Unit;
 type MageUnit = { job: 'mage' } & Unit;
+type SomeUnit = { job: 'fighter'|'mage' } & Unit;
 
 // Good
 ({ hp: 1, job: null }: CreatureUnit);
@@ -51,3 +52,9 @@ type MageUnit = { job: 'mage' } & Unit;
 ({ hp: 1, job: 'fighter' }: CreatureUnit);
 // Bad
 //({ hp: 1, job: 'fighter' }: MageUnit);
+
+// Good
+({ hp: 1, job: 'fighter' }: SomeUnit);
+({ hp: 1, job: 'mage' }: SomeUnit);
+// Bad
+//({ hp: 1, job: 'magex' }: SomeUnit);
