@@ -58,3 +58,20 @@ type SomeUnit = { job: 'fighter'|'mage' } & Unit;
 ({ hp: 1, job: 'mage' }: SomeUnit);
 // Bad
 //({ hp: 1, job: 'magex' }: SomeUnit);
+
+
+type Animal = {
+  type: string,
+};
+type Cat = Animal & {
+  voice: 'Mew',
+};
+type Dog = Animal & {
+  voice: 'Bow',
+};
+
+// Good
+({ type: 'cat', voice: 'Mew'}: Cat);
+({ type: 'dog', voice: 'Bow'}: Dog);
+// Bad
+//(Object.assign({ type: 'cat' }, { type: 'Mew' }): Cat);
