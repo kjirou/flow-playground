@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "flow-bin": "^0.39.0"
+    "flow-bin": "0.40.0"
   },
   "scripts": {
     "f": "yarn run flow",
