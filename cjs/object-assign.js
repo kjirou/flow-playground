@@ -50,3 +50,16 @@ const createState = (): { a: 1 | 3, b: 2 } => {
 // Bad
 //(Object.assign(createState(), { a: 3 }): { a: 3, b: 2 });
 //(Object.assign({}, createState(), { a: 3 }): { a: 3, b: 2 });
+
+// ----
+
+//
+// Questions
+//
+//   I do not know why these are cases
+//
+
+// Good
+(Object.assign({ a: 1 }, { a: 2 }): { a: 1 });
+// Bad
+//(Object.assign({ a: 2 }, { a: 1 }): { a: 1 });
