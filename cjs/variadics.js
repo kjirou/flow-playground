@@ -15,6 +15,7 @@ add(1);
 // Bad
 // add(1, '2');
 
+// ----
 
 const clone = (a, b/*:{}*/ = {}) => {
   return Object.assign({}, a, b);
@@ -26,3 +27,19 @@ clone({ x: 1 });
 
 // Bad
 //clone({ x: 1 }, []);
+
+// ----
+
+//
+// Rest parameters
+//
+
+const multiply = (...numbers/*:number[]*/)/*:number*/ => {
+  return numbers.reduce((memo, num) => memo * num, 1);
+};
+
+// Good
+multiply(1, 2, 3);
+// Bad
+//multiply(1, 2, null);
+//multiply([1, 2, 3]);
