@@ -18,6 +18,10 @@ Object.assign({}, { a: null }, { a: 1 });
 const obj = {};
 obj.x;
 obj.x = 1;
+// Good
+const obj2: Object = {};
+obj2.y;
+obj2.y = 2;
 // Bad
 //   It is considered to be a sealed object
 //const obj: {} = {};
