@@ -15,7 +15,6 @@
 // ...X の下に足したいプロパティを付与しないと足せない
 //
 
-/*::
 type Unit = {
   hp: number,
 };
@@ -25,31 +24,30 @@ type AllyUnit = {
   type: 'ALLY',
   mp: number,
 };
- */
 
 // Good
-const ally/*:AllyUnit*/ = {
+const ally: AllyUnit = {
   type: 'ALLY',
   hp: 1,
   mp: 2,
 };
 
 // Bad
-//const ally2/*:AllyUnit*/ = {
+//const ally2: AllyUnit = {
 //  type: 'ALLY',
 //  hp: 'a',
 //  mp: 2,
 //};
 
 // Bad
-//const ally3/*:AllyUnit*/ = {
+//const ally3: AllyUnit = {
 //  type: 'ALLY',
 //  hp: 1,
 //  mp: 2,
 //};
 
 // Good! なんで!?
-const ally4/*:AllyUnit*/ = {
+const ally4: AllyUnit = {
   type: 'ALLY',
   mp: 2,
 };
