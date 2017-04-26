@@ -1,4 +1,0 @@
-// @flow
-declare export function add(a: number, b: number): number;
-
-declare export function subtract(a: number, b: number): number;
