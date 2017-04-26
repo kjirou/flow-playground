@@ -1,29 +1,15 @@
 // @flow
 
-//
-// プロパティを足す場合は
-//
-// type X = {
-//   a: number,
-// };
-//
-// type Y = {
-//   ...X,
-//   b: number,
-// };
-//
-// ...X の下に足したいプロパティを付与しないと足せない
-//
-
 type Unit = {
   hp: number,
+  mp: number,
 };
 
 type AllyUnit = {
   ...Unit,
   type: 'ALLY',
-  mp: number,
 };
+
 
 // Good
 const ally: AllyUnit = {
@@ -41,13 +27,19 @@ const ally: AllyUnit = {
 
 // Bad
 //const ally3: AllyUnit = {
-//  type: 'ALLY',
+//  type: 'ENEMY',
 //  hp: 1,
 //  mp: 2,
 //};
 
-// Good! なんで!?
-const ally4: AllyUnit = {
+// Bad
+//const ally4: AllyUnit = {
+//  hp: 1,
+//  mp: 2,
+//};
+
+// Good
+const ally5: AllyUnit = {
   type: 'ALLY',
   mp: 2,
 };
