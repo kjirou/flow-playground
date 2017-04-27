@@ -44,7 +44,8 @@
   type T2_ = {
     // x は拡張する側の型定義になり、オプショナルになる
     x?: number,
-    // y は拡張する側の型定義になる
+    // z は拡張する側と拡張される側の型の union になるが、
+    // number | number なので結果 number になっている。たぶん。
     y: number,
     // z は拡張する側と拡張される側の型の union になる
     z: number | string,
