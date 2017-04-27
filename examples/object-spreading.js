@@ -106,7 +106,7 @@
   // しかし、これは期待と違う。
   // 自分が期待している結果はこれと同じになることである。
   //
-  type T4_ = {
+  type T2X = {
     existing: number,
     additional: number,
   };
@@ -116,26 +116,23 @@
   // Ref) https://github.com/facebook/flow/issues/3534#issuecomment-287580240
   //
 
-  type T3 = {
-    additional: number,
-  };
-
-  type T4 = {
+  type T2X_ = {
     existing: number,
     ...$Exact<T1>,
   };
 
-  ({ existing: 0, additional: 0 }: T4);
-  ({ existing: 0, additional: 0 }: T4_);
 
-  ({ existing: 0, additional: 0, more: 0 }: T4);
-  ({ existing: 0, additional: 0, more: 0 }: T4_);
+  ({ existing: 0, additional: 0 }: T2X);
+  ({ existing: 0, additional: 0 }: T2X_);
 
-  // Error
-  //({ existing: 0 }: T4);
-  //({ existing: 0 }: T4_);
+  ({ existing: 0, additional: 0, more: 0 }: T2X);
+  ({ existing: 0, additional: 0, more: 0 }: T2X_);
 
   // Error
-  //({ existing: [], additional: 0 }: T4);
-  //({ existing: [], additional: 0 }: T4_);
+  //({ existing: 0 }: T2X);
+  //({ existing: 0 }: T2X_);
+
+  // Error
+  //({ existing: [], additional: 0 }: T2X);
+  //({ existing: [], additional: 0 }: T2X_);
 })();
