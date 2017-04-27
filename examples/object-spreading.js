@@ -137,3 +137,39 @@
   //({ existing: [], additional: 0 }: T2X);
   //({ existing: [], additional: 0 }: T2X_);
 })();
+
+
+//
+// 既存プロパティをオプショナルへ拡張できない
+//
+(() => {
+  type T1 = {
+    x?: number,
+  };
+
+  type T2 = {
+    x: number,
+    ...T1,
+  };
+
+  // 以下と同じになるのではと思ったが..
+  type T2_ = {
+    x?: number,
+  };
+
+
+  ({ x: 0 }: T2);
+  ({ x: 0 }: T2_);
+
+  // Error: x は必須である
+  //({}: T2);
+  //({}: T2_);
+
+
+  //
+  // バグにみえる、という意見で絞められているが、
+  // Issue のタグにまだ bug は付いていない。
+  //
+  // https://github.com/facebook/flow/issues/3534#issuecomment-296406459
+  //
+})();
