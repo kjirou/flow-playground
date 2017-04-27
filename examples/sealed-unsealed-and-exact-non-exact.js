@@ -133,7 +133,7 @@
 
   // これも
   // 1) なし
-  // 2) obj2 変数の型を ObjType に決定している
+  // 2) obj3 変数の型を ObjType に決定している
   const obj3: ObjType = {
     num: 10,
     otherProp: 1,
