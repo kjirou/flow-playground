@@ -11,7 +11,7 @@
 // 関連資料:
 //
 //   挙動に疑問を投げかけている Issue 、コメントで解決方法が提示されている
-//     https://github.com/facebook/flow/issues/3534
+//     https://github.com/facebook/flow/issues/3534#issuecomment-287580240
 //
 
 
@@ -97,4 +97,45 @@
 
   ({ existing: [] }: T2);
   ({ existing: [] }: T2_);
+
+  ({ existing: [], additional: 0, more: 0 }: T2);
+  ({ existing: [], additional: 0, more: 0 }: T2_);
+
+
+  //
+  // しかし、これは期待と違う。
+  // 自分が期待している結果はこれと同じになることである。
+  //
+  type T4_ = {
+    existing: number,
+    additional: number,
+  };
+
+  //
+  // ということで $Exact を使うと解決するとのこと。
+  // Ref) https://github.com/facebook/flow/issues/3534#issuecomment-287580240
+  //
+
+  type T3 = {
+    additional: number,
+  };
+
+  type T4 = {
+    existing: number,
+    ...$Exact<T1>,
+  };
+
+  ({ existing: 0, additional: 0 }: T4);
+  ({ existing: 0, additional: 0 }: T4_);
+
+  ({ existing: 0, additional: 0, more: 0 }: T4);
+  ({ existing: 0, additional: 0, more: 0 }: T4_);
+
+  // Error
+  //({ existing: 0 }: T4);
+  //({ existing: 0 }: T4_);
+
+  // Error
+  //({ existing: [], additional: 0 }: T4);
+  //({ existing: [], additional: 0 }: T4_);
 })();
