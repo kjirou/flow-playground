@@ -14,5 +14,7 @@
     "flow": "$(npm bin)/flow; test $? -eq 0 -o $? -eq 2",
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM');\""
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "react": "^15.5.4"
+  }
 }
