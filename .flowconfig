@@ -6,4 +6,3 @@ es/decls/
 pure-common-js/decls/
 
 [options]
-strip_root=true
