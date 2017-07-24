@@ -4,6 +4,8 @@
  * 配列の destructing による宣言に union で宣言するとバグのような挙動になる
  *
  * やや関係のあるIssue: https://github.com/facebook/flow/issues/3067
+ *
+ * Issue 投げてみた: https://github.com/facebook/flow/issues/4449
  */
 
 
