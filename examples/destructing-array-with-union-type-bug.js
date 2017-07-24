@@ -6,6 +6,46 @@
  * やや関係のあるIssue: https://github.com/facebook/flow/issues/3067
  */
 
+
+// OK
+const [value1]: ['A'] = ['A'];
+const [value2_1]: ['A' | 'B'] = ['A'];
+const [value2_2]: ['A' | 'B'] = ['B'];
+//const [value2_3]: ['A' | 'B'] = ['C'];  // 期待通り NG
+const value3_1: ['A'] | ['B'] = ['A'];
+const value3_2: ['A'] | ['B'] = ['B'];
+//const value3_3: ['A'] | ['B'] = ['C'];  // 期待通り NG
+
+// NG
+//const [value4]: ['A'] | ['B'] = ['A'];
+/*
+v0.51.0 でのエラーメッセージ
+
+```bash
+$flow
+Error: examples/destructing-array-with-union-type-bug.js:61
+ 61: const [value4]: ['A'] | ['B'] = ['A'];
+            ^^^^^^ string literal `A`. Expected string literal `B`, got `A` instead
+ 61: const [value4]: ['A'] | ['B'] = ['A'];
+            ^^^^^^ string literal `B`
+
+Error: examples/destructing-array-with-union-type-bug.js:61
+ 61: const [value4]: ['A'] | ['B'] = ['A'];
+            ^^^^^^ string literal `B`. Expected string literal `A`, got `B` instead
+ 61: const [value4]: ['A'] | ['B'] = ['A'];
+            ^^^^^^ string literal `A`
+
+
+Found 2 errors
+```
+*/
+
+
+//
+// 関数の引数でも検証
+// ・・・元のユースケースがそうだったので、読まなくて良い
+//
+
 // OK
 const fn1 = ([v]: ['A']): 'A' => v;
 fn1(['A']);
@@ -22,23 +62,3 @@ fn3(['B']);
 
 // NG: 宣言だけでエラーになる
 //const fnNg = ([v]: ['A'] | ['B']): 'A' | 'B' => v;
-/*
-0.51.0 でのエラー出力
-
-```
-Error: examples/union-two-literal-arrays.js:24
- 24: const fnNg = ([v]: ['A'] | ['B']): 'A' | 'B' => v;
-                    ^ string literal `A`. Expected string literal `B`, got `A` instead
- 24: const fnNg = ([v]: ['A'] | ['B']): 'A' | 'B' => v;
-                    ^ string literal `B`
-
-Error: examples/union-two-literal-arrays.js:24
- 24: const fnNg = ([v]: ['A'] | ['B']): 'A' | 'B' => v;
-                    ^ string literal `B`. Expected string literal `A`, got `B` instead
- 24: const fnNg = ([v]: ['A'] | ['B']): 'A' | 'B' => v;
-                    ^ string literal `A`
-
-
-Found 2 errors
-```
-*/
