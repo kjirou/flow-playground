@@ -2,7 +2,6 @@
 .*/node_modules/.*
 
 [libs]
-es/decls/
-pure-common-js/decls/
+./flow-typed
 
 [options]

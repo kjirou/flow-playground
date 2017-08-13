@@ -15,6 +15,7 @@
     "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM');\""
   },
   "devDependencies": {
-    "react": "^15.5.4"
+    "react": "^15.5.4",
+    "sinon": "^3.2.0"
   }
 }
