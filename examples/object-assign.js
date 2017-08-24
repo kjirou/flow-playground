@@ -73,3 +73,26 @@ const createState = (): { a: 1 | 3, b: 2 } => {
 (Object.assign({ a: 1 }, { a: 2 }): { a: 1 });
 // Bad
 //(Object.assign({ a: 2 }, { a: 1 }): { a: 1 });
+
+// ----
+
+//
+// v0.53.1 から Object.assign({}, obj) が Exact を維持するようになった？
+//
+
+(() => {
+  const obj: {|
+    x: number,
+  |} = {
+    x: 1,
+  };
+
+  const extended = Object.assign({}, obj);
+
+  obj.x = 2;
+  // NG:
+  //obj.x = 'a';
+
+  // OK: そんなことはなかった
+  extended.y = 1;
+})();
