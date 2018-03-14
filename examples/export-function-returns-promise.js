@@ -21,7 +21,7 @@ export function baz2(): Promise<any> {
 };
 
 // NG: export していて Promise インスタンスを返しているのを推論できない
-//export function baz1(): Promise<any> {
+//export function baz1() {
 //  return Promise.resolve();
 //};
 
