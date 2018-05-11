@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "flow-bin": "0.67.1"
+    "flow-bin": "0.72"
   },
   "scripts": {
     "flow": "$(npm bin)/flow",
