@@ -10,8 +10,7 @@
     "flow-bin": "^0.73.0"
   },
   "scripts": {
-    "flow": "$(npm bin)/flow",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM');\""
+    "flow": "$(npm bin)/flow"
   },
   "devDependencies": {
     "react": "^16.2.0",
